@@ -48,7 +48,7 @@
 
     
 
-    <form action="{{ route('forms.update',$form->id) }}" method="POST" enctype="multipart/form-data"> 
+    <form action="{{ route('forms.update',$form->id) }}" method="POST" id="myForm" enctype="multipart/form-data"> 
 
         @csrf
 
@@ -64,7 +64,7 @@
 
         <strong>First Name:</strong>
 
-        <input type="text" name="fname" value="{{$form->fname}}" class="form-control" placeholder="First Name" require>
+        <input type="text" name="fname" value="{{$form->fname}}" class="form-control" placeholder="First Name" required data-parsley-pattern="[a-zA-z]+$" data-parsley-trigger="keyup">
 
     </div>
 
@@ -75,7 +75,7 @@
 
         <strong>Last Name:</strong>
 
-        <input type="text" value="{{$form->lname}}" name="lname" class="form-control" placeholder="Last Name" require>
+        <input type="text" value="{{$form->lname}}" name="lname" class="form-control" placeholder="Last Name" required data-parsley-pattern="[a-zA-z]+$" data-parsley-trigger="keyup">
 
     </div>
 
@@ -86,7 +86,7 @@
 
         <strong>Age:</strong>
 
-        <input type="text" name="age" value="{{$form->age}}" class="form-control" placeholder="Age" require>
+        <input type="text" name="age" value="{{$form->age}}" class="form-control" placeholder="Age" data-parsley-length="[1-200]" required data-parsley-pattern="/^([0-9\s\-\+\(\)]*)$/|" data-parsley-trigger="keyup" >
 
     </div>
 
@@ -97,7 +97,7 @@
 
         <strong>Email:</strong>
 
-        <input type="email" name="email" value="{{$form->email}}" class="form-control" placeholder="Email" require>
+        <input type="email" name="email" value="{{$form->email}}" class="form-control" placeholder="Email" required data-parsley-type ="email" data-parsley-trigger="keyup" >
 
     </div>
 
@@ -109,7 +109,7 @@
 
         <strong>Mobile no:</strong>
 
-        <input type="text" name="mobile" value="{{$form->mobile}}" class="form-control" placeholder="Mobile No" require>
+        <input type="text" name="mobile" value="{{$form->mobile}}" class="form-control" placeholder="Mobile No" required data-parsley-pattern="[0-9]+$" data-parsley-length="[10,13]" data-parsley-trigger="keyup">
 
     </div>
 
@@ -121,7 +121,7 @@
 
         <strong>Image:</strong>
 
-        <input type="file" name="image" value="/image/{{$form->image}}" class="form-control" placeholder="image" require>
+        <input type="file" name="image" value="/image/{{$form->image}}" class="form-control" placeholder="image" data-parsley-fileextension="image">
 
     </div>
 

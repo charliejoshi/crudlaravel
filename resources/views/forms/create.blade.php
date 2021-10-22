@@ -48,13 +48,13 @@
 
      
 
-<form action="{{ route('forms.store') }}" method="POST" enctype="multipart/form-data">
+<form  id="myForm" action="{{ route('forms.store') }}" method="POST" enctype="multipart/form-data">
 
     @csrf
 
     
 
-    <div class="row">
+    <div class="row" id="loaddata">
 
         <div class="col-xs-12 col-sm-12 col-md-12">
 
@@ -62,7 +62,7 @@
 
                 <strong>First Name:</strong>
 
-                <input type="text" name="fname" class="form-control" placeholder="First Name" require>
+                <input type="text" name="fname" class="form-control" placeholder="First Name" required data-parsley-pattern="[a-zA-z]+$+\s\" data-parsley-trigger="keyup">
 
             </div>
 
@@ -73,7 +73,7 @@
 
                 <strong>Last Name:</strong>
 
-                <input type="text" name="lname" class="form-control" placeholder="Last Name" require>
+                <input type="text" name="lname" class="form-control" placeholder="Last Name" required data-parsley-pattern="[a-zA-z]+$+\s\" data-parsley-trigger="keyup">
 
             </div>
 
@@ -84,7 +84,8 @@
 
                 <strong>Age:</strong>
 
-                <input type="text" name="age" class="form-control" placeholder="Age" require>
+                <input type="text" name="age" class="form-control" placeholder="Age" data-parsley-length="[1-200]" required data-parsley-pattern="/^([0-9\s\-\+\(\)]*)$/|" data-parsley-trigger="keyup">
+
 
             </div>
 
@@ -95,7 +96,7 @@
 
                 <strong>Email:</strong>
 
-                <input type="email" name="email" class="form-control" placeholder="Email" require>
+                <input type="email" name="email" class="form-control" placeholder="Email" required data-parsley-type ="email" data-parsley-trigger="keyup">
 
             </div>
 
@@ -107,7 +108,7 @@
 
                 <strong>Mobile no:</strong>
 
-                <input type="text" name="mobile" class="form-control" placeholder="Mobile no" require>
+                <input type="text" name="mobile" class="form-control" placeholder="Mobile no" required data-parsley-pattern="[0-9]+$" data-parsley-length="[10,13]" data-parsley-trigger="keyup">
 
             </div>
 
@@ -119,7 +120,7 @@
 
                 <strong>Image:</strong>
 
-                <input type="file" name="image" class="form-control" placeholder="image" require>
+                <input type="file" name="image" class="form-control" placeholder="image" data-parsley-fileextension="image">
 
             </div>
 
@@ -135,13 +136,9 @@
      
 
 </form>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js">
 
+ 
 </script>
-<script>
-    jQuery('#frmsub').submit(function(e){
-       e.preventDefault();
-       alert('test') ;
-    });
-</script>
+
+
 @endsection
